@@ -1,3 +1,4 @@
+const Time = require('./time');
 const Count = require('./count');
 const ToDoList = require('./todoList');
 
@@ -11,7 +12,9 @@ const ToDoList = require('./todoList');
             crossOrigin="anonymous"></script>
 </head>
 <body>
-<Count/>
+
+<Time time={time} />
+<Count />
 <ToDoList todos={todos} />
 
 <link rel="stylesheet" href="/public/css/tokens.css"/>

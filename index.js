@@ -18,20 +18,24 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 let count = 0;
 let todos = [];
+const getTime = () => new Date().toLocaleString('cs-CZ', { timeZone: 'Europe/Prague' });
 
 app.get('/', (req, res) => {
   count = 0;
-  res.render('index', { count, todos });
+  res.render('index', { count, todos, time: getTime() });
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`App listening on port ${port}`);
 })
 
 // API
+app.get('/api/getTime', (req, res) => {
+  res.send(getTime());
+});
+
 app.post('/api/increment', (req, res) => {
   count++;
-  res.set('Content-Type', 'text/html');
   res.send(count.toString());
 });
 
